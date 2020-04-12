@@ -38,11 +38,10 @@
 			font-family: 'Open Sans', sans-serif;
 		}
 
-		.container-form {
+		.form {
 			display: flex;
-			flex-wrap: nowrap;
-			overflow: hidden;
-			margin: auto;
+			flex-wrap: wrap;
+			margin: 1em auto;
 			width: 95%;
 			max-width: 420px;
 			background-color: #f5f5f5;
@@ -50,7 +49,15 @@
 			box-shadow: 0px 3px 5px #161616;
 		}
 
+		.container-form {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow: hidden;
+		}
+
 		#container-abas{
+			display: flex;
+			flex-wrap: wrap;
 			width: 100%;
 			height: 50px;
 			min-width: 320px;
@@ -60,6 +67,22 @@
 		.aba{
 			width: 50%;
 			height: 100%;
+			padding: 0.9em;;
+			color: black;
+			background-color: #f5f5f5;
+			text-align: center;
+			font-weight: 700;
+			border-bottom:  solid 1px rgb(88, 88, 88);
+		}
+
+		.borda-arredondamento-direita{
+			border-radius: 0 0.5em 0 0;
+			border-left: 1px solid rgb(88, 88, 88);
+		}
+
+		.borda-arredondamento-esquerda{
+			border-radius:  0.5em 0 0 0;
+			border-right: 1px solid rgb(88, 88, 88);
 		}
 
 
@@ -157,62 +180,89 @@
 </head>
 
 <body>
-	<form class="container-form" action="/pagina-processa-dados-do-form" method="post">
+	<form class="form" action="/pagina-processa-dados-do-form" method="post">
 		<div id="container-abas">
-			<div class="aba">Informações Pessoais</div>
-			<div class="aba">Preferências</div>
+			<div class="aba vermelho borda-arredondamento-esquerda" id="aba1">Informações Pessoais</div>
+			<div class="aba borda-arredondamento-direita" id="aba2">Preferências</div>
 		</div>
-		<div class="container-conteudo">
-			<div class="container-titulo">
-				<label>Informações Pessoais</label>
+		<div class="container-form">
+			<div class="container-conteudo" id="informacoes">
+				<div class="container-titulo">
+					<label>Informações Pessoais</label>
+				</div>
+				<div class="container-input">
+					<label for="nome">Nome de usuario:</label><button><i class="fas fa-times icone-vermelho"></i></button>
+					<input class="borda-vermelha" type="text" id="nome" placeholder="Nome de usuario aqui..." />
+				</div>
+				<div class="container-input">
+					<label for="email">E-mail:</label><button><i class="fas fa-check-square icone-verde"></i></button>
+					<input class="borda-verde" type="email" id="email" placeholder="Email de usuario aqui..." />
+				</div>
+				<div class="container-input">
+					<label for="data-nascimento">Data de nascimento:</label>
+					<input class="borda-amarela" type="number" id="data-nascimento"
+						placeholder="Data de nascimento de usuario aqui..." />
+				</div>
+				<div class="container-input">
+					<label for="senha">Senha:</label>
+					<input type="password" id="senha" placeholder="Email de usuario aqui...">
+				</div>
+				<div class="container-input">
+					<label for="confirme-senha">Confirme a senha:</label>
+					<input type="password" id="confirme-senha" placeholder="Confirme a senha">
+				</div>
+				<div class="container-input">
+					<input class="button vermelho" id="prosseguir" type="button" value="Prosseguir">
+				</div>
 			</div>
-			<div class="container-input">
-				<label for="nome">Nome de usuario:</label><button><i class="fas fa-times icone-vermelho"></i></button>
-				<input class="borda-vermelha" type="text" id="nome" placeholder="Nome de usuario aqui..." />
-			</div>
-			<div class="container-input">
-				<label for="email">E-mail:</label><button><i class="fas fa-check-square icone-verde"></i></button>
-				<input class="borda-verde" type="email" id="email" placeholder="Email de usuario aqui..." />
-			</div>
-			<div class="container-input">
-				<label for="data-nascimento">Data de nascimento:</label><button><i
-						class="fas fa-asterisk icone-amarelo"></i></button>
-				<input class="borda-amarela" type="number" id="data-nascimento"
-					placeholder="Data de nascimento de usuario aqui..." />
-			</div>
-			<div class="container-input">
-				<label for="senha">Senha:</label>
-				<input type="password" id="senha" placeholder="Email de usuario aqui...">
-			</div>
-			<div class="container-input">
-				<label for="confirme-senha">Confirme a senha:</label>
-				<input type="password" id="confirme-senha" placeholder="Confirme a senha">
-			</div>
-			<div class="container-input">
-				<input class="button vermelho" type="button" value="Proceguir">
-			</div>
-		</div>
-		<div class="container-conteudo">
-			<div class="container-titulo">
-				<label>Preferências</label>
-			</div>
-			<div class="container-input">
-				<label for="nome">Nome de usuario:</label>
-				<input type="text" id="nome" />
-			</div>
-			<div class="container-input">
-				<label for="email">E-mail:</label><button><i class="fas fa-check"></i></button>
-				<input type="email" id="email" />
-			</div>
-			<div class="container-input">
-				<label for="senha">Senha:</label>
-				<input type="password" id="senha">
-			</div>
-			<div class="container-input">
-				<input class="button vermelho" type="submit" value="Cadastrar">
+			<div class="container-conteudo" id="preferencias">
+				<div class="container-titulo">
+					<label>Preferências</label>
+				</div>
+				<div class="container-input">
+					<label for="nome">Nome de usuario:</label>
+					<input type="text" id="nome" />
+				</div>
+				<div class="container-input">
+					<label for="email">E-mail:</label><button>
+					<input type="email" id="email" />
+				</div>
+				<div class="container-input">
+					<label for="senha">Senha:</label>
+					<input type="password" id="senha">
+				</div>
+				<div class="container-input">
+					<input class="button vermelho" type="submit" value="Cadastrar">
+				</div>
 			</div>
 		</div>
 	</form>
+
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+		  var prosseguir = document.querySelector('#prosseguir');
+		  
+		  prosseguir.addEventListener('click', function() {
+			var informacoes = document.querySelector('#informacoes');
+			var aba_um = document.querySelector('#aba1');
+			var aba_dois = document.querySelector('#aba2');
+
+			informacoes.style.marginLeft = "-370px";
+			aba_um.classList.remove("vermelho");
+			aba_dois.classList.add("vermelho");
+
+			aba_um.addEventListener('click', function() {
+				var informacoes = document.querySelector('#informacoes');
+				var aba_um = document.querySelector('#aba1');
+				var aba_dois = document.querySelector('#aba2');
+
+				informacoes.style.marginLeft = "50px";
+				aba_um.classList.add("vermelho");
+				aba_dois.classList.remove("vermelho");
+			});
+		  });
+		});
+		</script>
 </body>
 
 </html>
